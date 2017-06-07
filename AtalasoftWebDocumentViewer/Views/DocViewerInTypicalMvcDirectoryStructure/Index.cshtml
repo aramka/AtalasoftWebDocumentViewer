@@ -36,9 +36,29 @@
 
 				// sample document on server here:
 
-                documenturl: '../../Invoice.pdf',
+                //documenturl: '../../Invoice.pdf',
                 viewer: viewer
             });
+            
+            // subscribe to error event to receive notification if something goes wrong.
+            // https://atalasoft.github.io/web-document-viewer/Atalasoft.Controls.WebDocumentViewer.html#event:error
+            thumbs.bind('error', function (event) {
+                console.log('error');
+                console.log(event.name);
+                console.log(event.message);
+            });
+
+            // documentloaded is an informational event when document data was loaded and control initialized.
+            // handling this event is alternative to passing callback to "openUrl" method.
+            // note that page images are loaded independently. while pages aren't received image for the first time 
+            // they have 'atala_page_loading'(viewer.domclasses.atala_page_loading through api) class.
+            //https://atalasoft.github.io/web-document-viewer/Atalasoft.Controls.WebDocumentViewer.html#event:documentloaded
+            thumbs.bind('documentloaded', function (event) {
+                console.log('documentloaded');
+                console.log(event);
+            });
+
+            thumbs.openUrl('~/Invoice.pdf');
 
         } catch (error) {
             alert('Thrown error: ' + error.description);
