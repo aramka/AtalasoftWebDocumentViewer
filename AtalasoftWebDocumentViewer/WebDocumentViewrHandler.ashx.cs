@@ -11,15 +11,16 @@ namespace AtalasoftWebDocumentViewer
     /// </summary>
     public class WebDocumentViewrHandler : WebDocumentRequestHandler
     {
-        protected override void OnPageTextRequested(PageTextRequestedEventArgs e)
-        {
-            base.OnPageTextRequested(e);
+        public WebDocumentViewrHandler():base(){
+
+            this.AnnotationDataRequested += WebDocumentViewrHandler_AnnotationDataRequested;
+            
         }
-        protected override void WriteResponseHeaders(HttpContext context)
+
+        private void WebDocumentViewrHandler_AnnotationDataRequested(object sender, AnnotationDataRequestedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Hello world");
-            System.Diagnostics.Debug.WriteLine(context.Request.RawUrl);
-            base.WriteResponseHeaders(context);
+            System.Diagnostics.Debug.WriteLine("WebDocumentViewrHandler_AnnotationDataRequested");
+            
         }
     }
 }

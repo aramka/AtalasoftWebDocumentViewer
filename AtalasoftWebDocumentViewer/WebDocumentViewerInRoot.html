@@ -28,14 +28,10 @@
             var thumbs = new Atalasoft.Controls.WebDocumentThumbnailer({
                 parent: $('.atala-document-thumbnailer'),
                 serverurl: serverUrl,
-
-                // Note that specify relative URL to our
-
-				// sample document on server here:
-
-                documenturl: '~/Invoice.pdf',
                 viewer: viewer
             });
+
+            thumbs.openUrl('~/Invoice.pdf','~/Invoice.pdf');
 
         } catch (error) {
             alert('Thrown error: ' + error.description);
