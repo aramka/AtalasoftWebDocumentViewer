@@ -28,7 +28,8 @@
             var thumbs = new Atalasoft.Controls.WebDocumentThumbnailer({
                 parent: $('.atala-document-thumbnailer'),
                 serverurl: serverUrl,
-                viewer: viewer
+                viewer: viewer,
+                allowannotations:true
             });
 
             thumbs.openUrl('~/Invoice.pdf','~/Invoice.pdf');
